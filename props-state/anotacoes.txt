@@ -1,0 +1,3 @@
+semantic ui
+cdn semantic ui
+github faker-js/faker
