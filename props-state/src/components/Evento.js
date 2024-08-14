@@ -2,31 +2,37 @@ import React from "react";
 import { faker } from '@faker-js/faker';
 
 
-const Evento = (props) => {
-    return(
-        <div className="ui feed">
-      <div className="event">
-        <div className="label">
-          <img src={faker.image.avatar()}/>
-        </div>
-        <div className="content">
-          <div className="summary">
-            <a className="user">
-              {props.nome}
-            </a> says that Botafogo is the best
-            <div className="date">
-              1 Hour Ago
-            </div>
+class Evento extends React.Component{
+  constructor(props){
+    super(props);
+    }
+
+    render(){
+      return(
+          <div className="ui feed">
+        <div className="event">
+          <div className="label">
+            <img src={this.props.fotoPerfil}/>
           </div>
-          <div className="meta">
-            <a className="like">
-              <i className="like icon"></i> {props.likes} Likes
-            </a>
+          <div className="content">
+            <div className="summary">
+              <a className="user">
+                {this.props.nome}
+              </a> {this.props.mensagem}
+              <div className="date">
+                {this.props.tempo} 
+              </div>
+            </div>
+            <div className="meta">
+              <a className="like">
+                <i className="like icon"></i> {this.props.likes} Likes
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    )
+      )
+    }
 };
 
 
