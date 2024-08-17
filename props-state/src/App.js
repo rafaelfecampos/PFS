@@ -2,6 +2,7 @@ import './App.css';
 import { faker } from '@faker-js/faker';
 import React from "react";
 import Evento from './components/Evento';
+import Spinner from './components/Spinner';
 
 // function App() {
 //   return (
@@ -23,11 +24,10 @@ class App extends React.Component{
 
   render(){
     if(!this.state.carregado){
-      setTimeout(() => {
-        this.setState({ feeds: objetos, carregado: true});
-        
-      },1250)
-      return (<div>Carregando...</div>);
+      return (
+      <Spinner /*mensagem="Está carregando"*//> //conseguimos deixar uma variável declarada preenchida e substituir seu valor ao utilizar o componente em que ela pertence
+      //observe o defaultProps no componente Spinner, tem-se defaultProps definindo o valor de mensagem
+      )
     }
     return (
       <div className='ui feed'>
@@ -39,36 +39,43 @@ class App extends React.Component{
       </div>
     );
   }
+  
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ feeds: objetos, carregado: true});
+      
+    },1250)
+  }
 }
 
 const objetos = [
   {
     nome: faker.person.firstName(),
-    likes: faker.number.int(),
+    likes: faker.number.int({min: 0, max: 50}),
     mensagem: faker.lorem.sentence(),
     fotoPerfil: faker.image.avatar(),
-    tempo: faker.number.int()
+    tempo: faker.number.int({min: 0, max: 50})
   },
   {
     nome: faker.person.firstName(),
-    likes: faker.number.int(),
+    likes: faker.number.int({min: 0, max: 50}),
     mensagem: faker.lorem.sentence(),
     fotoPerfil: faker.image.avatar(),
-    tempo: faker.number.int()
+    tempo: faker.number.int({min: 0, max: 50})
   },
   {
     nome: faker.person.firstName(),
-    likes: faker.number.int(),
+    likes: faker.number.int({min: 0, max: 50}),
     mensagem: faker.lorem.sentence(),
     fotoPerfil: faker.image.avatar(),
-    tempo: faker.number.int()
+    tempo: faker.number.int({min: 0, max: 50})
   },
   {
     nome: faker.person.firstName(),
-    likes: faker.number.int(),
+    likes: faker.number.int({min: 0, max: 50}),
     mensagem: faker.lorem.sentence(),
     fotoPerfil: faker.image.avatar(),
-    tempo: faker.number.int()
+    tempo: faker.number.int({min: 0, max: 50})
   },
 ]
 export default App;

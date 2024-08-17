@@ -20,7 +20,7 @@ class Evento extends React.Component{
                 {this.props.nome}
               </a> {this.props.mensagem}
               <div className="date">
-                {this.props.tempo} 
+                {this.props.tempo} minutos 
               </div>
             </div>
             <div className="meta">
