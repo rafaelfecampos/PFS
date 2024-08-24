@@ -1,106 +1,176 @@
-import React, { useState, useEffect } from 'react';
+// import React, {useState, useRef, useEffect} from "react";
+
+// const numeros = [1,2,3,4,5,6,7,8,9,10];
 
 
-const MenorQue10 = () => {
-  useEffect(() => {
-    console.log(`Iniciado`);
-
-    return (
-      () => console.log(`Finalizado`)
-    );
-  }, []);
-
-  return <p>menor que 10...</p>;
-}
-
-const App = () => {
-  const [cliques, setCliques] = useState(0);
-
-  const menor10 = cliques < 10 ? <MenorQue10 /> : null;
-
-  return (
-    <div>
-      <h4>Clicou {cliques} vezes.</h4>
-      {menor10}
-      <button onClick={() => { setCliques(cliques + 1) }}>Clique</button>
-    </div>
-  );
-};
-
-export default App;
-
-
-
-
-// import './App.css';
-// import { faker } from '@faker-js/faker';
-// import React, {useState, useEffect} from "react";
-// import Evento from './components/Evento';
-// import Spinner from './components/Spinner';
-
-// const App = (props) => {
-//   //Hooks
-//   const [dados, setDados] = useState([]);
-//   const [carregando, setCarregando] = useState(true);
-  
-//   useEffect(() => {
-//     setTimeout(() => {
-//       console.log(`Carregando: ${carregando}`);
-//       setCarregando(false);
-//       setDados(objetos);
-//     }, 2000);
-//   },[]);
-  
-//   if (carregando) {
-//     return <Spinner />;
-//   }
-
-//   return (<div className="ui feed">
+// const App = () => {
+//   return (
+//     <ul>
 //       {
-//         dados.map(x => {
-//           return (<Evento 
-//             nome={x.nome} 
-//             likes={x.likes} 
-//             mensagem={x.mensagem} 
-//             fotoPerfil={x.fotoPerfil} 
-//             tempo={x.tempo} 
-//           />);
-//         })
+//         numeros.map(x => <li key={x}>{x}</li>) //é necessário adicionar a propriedade key para evitar warning
 //       }
-//     </div>);
+//     </ul>
+//   );
+// }
+
+// export default App;
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------
+// import React, { useState, useRef, useEffect } from 'react';
+
+
+// const App = () => {
+//   const cliques = useRef(0);
+//   const [atualizadoEm, setAtualizadoEm] = useState(Date.now());
+
+//   //const menor10 = cliques < 10 ? <MenorQue10 cliques={cliques} /> : null;
+//   return (
+//     <div>
+//       <h4>Clicou {cliques.current} vezes.</h4>
+//       {/* {menor10} */}
+
+//       <button onClick={() => { 
+//         cliques.current = cliques.current + 1 
+//         console.log(cliques.current);
+//         }}>Clique
+//       </button>
+
+//       <button onClick={() => { 
+//         setAtualizadoEm(Date.now());
+//         }}>Mostrar
+//       </button>
+
+//       <button onClick={() => { 
+//         cliques.current = 0
+//         console.log(cliques.current);
+//         }}>Zerar
+//       </button>
+//     </div>
+//   );
 // };
 
-// const objetos = [
-//   {
-//     nome: faker.person.firstName(),
-//     likes: faker.number.int({min: 0, max: 50}),
-//     mensagem: faker.lorem.sentence(),
-//     fotoPerfil: faker.image.avatar(),
-//     tempo: faker.number.int({min: 0, max: 50})
-//   },
-//   {
-//     nome: faker.person.firstName(),
-//     likes: faker.number.int({min: 0, max: 50}),
-//     mensagem: faker.lorem.sentence(),
-//     fotoPerfil: faker.image.avatar(),
-//     tempo: faker.number.int({min: 0, max: 50})
-//   },
-//   {
-//     nome: faker.person.firstName(),
-//     likes: faker.number.int({min: 0, max: 50}),
-//     mensagem: faker.lorem.sentence(),
-//     fotoPerfil: faker.image.avatar(),
-//     tempo: faker.number.int({min: 0, max: 50})
-//   },
-//   {
-//     nome: faker.person.firstName(),
-//     likes: faker.number.int({min: 0, max: 50}),
-//     mensagem: faker.lorem.sentence(),
-//     fotoPerfil: faker.image.avatar(),
-//     tempo: faker.number.int({min: 0, max: 50})
-//   },
-// ]
 // export default App;
+
+
+
+
+//-------------------------------------------
+
+// const MenorQue10 = ({cliques}) => {
+//   useEffect(() => {
+//     console.log(`Iniciado ${cliques}`);
+
+//     return (
+//       () => console.log(`Finalizado: ${cliques}`)
+//     );
+//   }, []);
+
+//   return <p>menor que 10...</p>;
+// }
+
+// const App = () => {
+//   const [cliques, setCliques] = useState(0);
+
+//   const menor10 = cliques < 10 ? <MenorQue10 cliques={cliques} /> : null;
+
+//   return (
+//     <div>
+//       <h4>Clicou {cliques} vezes.</h4>
+//       {menor10}
+//       <button onClick={() => { setCliques(cliques + 1) }}>Clique</button>
+//     </div>
+//   );
+// };
+
+// export default App;
+
+
+//----------------------------------------------------------------------------
+
+import './App.css';
+import { faker } from '@faker-js/faker';
+import React, {useState, useEffect} from "react";
+import Evento from './components/Evento';
+import Spinner from './components/Spinner';
+
+const App = (props) => {
+  //Hooks
+  const [dados, setDados] = useState([]);
+  const [carregando, setCarregando] = useState(true);
+  
+  useEffect(() => {
+    setTimeout(() => {
+      console.log(`Carregando: ${carregando}`);
+      setCarregando(false);
+      setDados(objetos);
+    }, 2000);
+  },[]);
+  
+  if (carregando) {
+    return <Spinner />;
+  }
+
+  return (<div className="ui feed">
+      {
+        dados.map(x => {
+          return (<Evento
+            key = {x.id} 
+            nome={x.nome} 
+            likes={x.likes} 
+            mensagem={x.mensagem} 
+            fotoPerfil={x.fotoPerfil} 
+            tempo={x.tempo} 
+          />);
+        })
+      }
+    </div>);
+};
+
+const objetos = [
+  {
+    id:1,
+    nome: faker.person.firstName(),
+    likes: faker.number.int({min: 0, max: 50}),
+    mensagem: faker.lorem.sentence(),
+    fotoPerfil: faker.image.avatar(),
+    tempo: faker.number.int({min: 0, max: 50})
+  },
+  {
+    id:2,
+    nome: faker.person.firstName(),
+    likes: faker.number.int({min: 0, max: 50}),
+    mensagem: faker.lorem.sentence(),
+    fotoPerfil: faker.image.avatar(),
+    tempo: faker.number.int({min: 0, max: 50})
+  },
+  {
+    id:3,
+    nome: faker.person.firstName(),
+    likes: faker.number.int({min: 0, max: 50}),
+    mensagem: faker.lorem.sentence(),
+    fotoPerfil: faker.image.avatar(),
+    tempo: faker.number.int({min: 0, max: 50})
+  },
+  {
+    id:4,
+    nome: faker.person.firstName(),
+    likes: faker.number.int({min: 0, max: 50}),
+    mensagem: faker.lorem.sentence(),
+    fotoPerfil: faker.image.avatar(),
+    tempo: faker.number.int({min: 0, max: 50})
+  },
+]
+export default App;
 //------------------------------------------------------------------------
 // function App() {
 //   return (
