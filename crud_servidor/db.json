@@ -1,0 +1,20 @@
+{
+  "feeds": [
+    {
+      "id": "1",
+      "usuario": "Bruno",
+      "tempo": "Há 10 minutos",
+      "mensagem": "Postou algo",
+      "fotoPerfil": "",
+      "likes": 10
+    },
+    {
+      "id": "3",
+      "usuario": "Igor Jesus",
+      "tempo": "Há 13 minutos",
+      "mensagem": "Fez o 4º gol no são paulo",
+      "fotoPerfil": "",
+      "likes": 35000
+    }
+  ]
+}
