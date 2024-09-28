@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const AlunoConsultar = () =>{
     const [objeto, setObjeto] = useState(null);
@@ -30,6 +30,9 @@ const AlunoConsultar = () =>{
             <label>
                 Nome<input type="text" readOnly={true} value={objeto.nome} />
             </label>
+            <br/>
+            <Link to="/alunos">Voltar</Link>
+
         </div>
     );
 };
